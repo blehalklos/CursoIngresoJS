@@ -8,7 +8,7 @@ function Mostrar()
     ancho=document.getElementById("ancho").value;
     largo= parseInt(largo)
     ancho= parseInt(ancho)
-    perimetro=largo*ancho
+    perimetro=largo*ancho*2
     alert ("usted necesita" + perimetro*6 + "metros de cable")
 	
 }
