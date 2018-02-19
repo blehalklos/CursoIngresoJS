@@ -5,10 +5,7 @@ function Mostrar()
 	{
 		console.log(num)
 		num++
-		
 	}
 	
 	
-
-
 }//FIN DE LA FUNCIÓN
