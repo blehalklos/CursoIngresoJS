@@ -1,9 +1,9 @@
 function Mostrar()
 {
-	var num=0
-	while (num<10)
+	var num=11
+	while (num>0)
 	{
-		console.log(10-num)
+		console.log(11-num)
 		num--;
 	}
 
