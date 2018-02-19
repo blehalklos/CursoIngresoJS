@@ -22,11 +22,24 @@ function comenzar()
 function verificar()
 { 
   contadorIntentos= contadorIntentos+1;
+
+
   var numero
   numero= document.getElementById("numero").value;
-  if (numero==numeroSecreto)
+
+    if (contadorIntentos > 10)
   {
-    alert ("Usted es un ganador")
+    alert ("game over")
+  }
+  
+  else if (numero>100)
+  {
+    alert ("boludo te dije entre 1 y 100")
+  }
+  
+  else if (numero==numeroSecreto)
+  {
+    alert ("GG PeRrI")
     document.getElementById("intentos").value = contadorIntentos
   }
 
