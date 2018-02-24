@@ -1,7 +1,12 @@
 function Mostrar()
 {
 
-var repetciones = prompt("ingrese el número de repeticiones");
+var repeticiones = prompt("ingrese el número de veces que queres comer la papa");
+
+for(var papitojugoaldoom=0; papitojugoaldoom!=repeticiones; papitojugoaldoom++)
+{
+    console.log("a comer la papaaa"+papitojugoaldoom)
+}
 
 
 
