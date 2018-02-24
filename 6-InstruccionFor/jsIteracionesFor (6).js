@@ -2,7 +2,7 @@ function Mostrar()
 {
  var rep=prompt("ingresa un numero")
  var contador=0
- for (i=1;i<rep;i++)
+ for (i=1;i<=rep;i++)
  {
      if(i%2==0)
      {
@@ -15,6 +15,6 @@ function Mostrar()
  }
 
 
-
+alert("cantidad de numeros "+contador)
 
 }//FIN DE LA FUNCIÓN
