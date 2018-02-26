@@ -19,11 +19,21 @@ function ComenzarIngreso ()
     var Nacionalidad
     var respuesta=true
     var sueldoTotal=0
-    var sueldoMasculino=0
-    var sueldoFemenino=0
-    var sueldoPromedioM=0
-    var sueldoPromedioF=0
-    var promedio
+    var sueldoTotalMF=0
+    var sueldoM=0
+    var sueldoF=0
+    var promedioM=0
+    var promedioF=0
+    var sueldoNacionalizado=0
+    var sueldoMinimo=8000
+    var smn=8000//sueldo maximo nacionalizados
+    var smfa=8000//sexo maximo femenino y argentino
+    var efsm//edad de la persona f con sueldo max
+    var smf//sueldo maximo femenino
+    var sma=999999999999//sueldo minimo argentino
+    var amn//argentino con menor sueldo
+    var promedioMF
+    var promedio=0 // promedio de todas las personas
     var contadorPersonas=0
     var contador1=0 // cant. personas s.neto>s.promedio
     var contador2=0 // cant. personas s.bruto<s. promedio
@@ -38,10 +48,9 @@ while(respuesta==true)
     //pido edad
     Edad= prompt('Ingrese su edad por favor')
     Edad= parseInt(Edad)
-    while(Edad>=18 || Edad<=90 || isNaN(Edad))
+    while(Edad < 18 || Edad > 90 || isNaN(Edad))
     {
-        console.log(Edad)
-        Edad= prompt('Solo números por favor')
+        Edad= prompt('Solo entre 18 y 90')
     }
    
    
@@ -55,7 +64,7 @@ while(respuesta==true)
     
     //pido estado civil
     eCivil= prompt('Ingrese su estado civil (1=Soltero/a - 2=Casado/a - 3=Divorciado/a - 4=Viudo/a)')
-    while(eCivil!="1" && eCivil!="2" && eCivil!="3" && eCivil!=4)
+    while(eCivil!="1" && eCivil!="2" && eCivil!="3" && eCivil!="4")
     {
         eCivil= prompt('Ingrese un estado civil valido por favor (1=Soltero/a - 2=Casado/a - 3=Divorciado/a - 4=Viudo/a)')
     }
@@ -64,7 +73,7 @@ while(respuesta==true)
     //pido sueldo
     sBruto= prompt('Ingrese su sueldo bruto por favor')
     sBruto= parseInt(sBruto)
-    while(sBruto<=8000 && isNaN(sBruto))
+    while(sBruto<=8000)
     {
         sBruto= prompt('Su sueldo debe ser mayor a $8000')
     }
@@ -72,8 +81,7 @@ while(respuesta==true)
    
     //pido legajo
     nLegajo= prompt('Ingrese su legajo por favor')
-    nLegajo= parseInt(nLegajo)
-    while(nLegajo<9999 || isNaN(nLegajo))
+    while(nLegajo>9999)
     {
         nLegajo= prompt('Legajo no valido, ingreselo otra vez')
     }
@@ -88,6 +96,11 @@ while(respuesta==true)
     //operaciones
     sueldoTotal=sBruto+sueldoTotal
     promedio=sueldoTotal/contadorPersonas
+    
+    if(Nacionalidad=="A" && sBruto<sma)
+    {
+        sma=sBruto
+
     if(sBruto>promedio)
     {
         contador1++
@@ -98,21 +111,44 @@ while(respuesta==true)
         contador2++
     }
 
-    if(Sexo=="M" && sBruto<=12000)
+    if(Sexo=="M" && sBruto>=12000)
     {
         contador3++
     }
+
     if(Sexo=="M")
     {
         contadorMasculino++
+        sueldoM=sBruto+sueldoM
     }
+
     if(Sexo=="F")
     {
         contadorFemenino++
+        sueldoF=sBruto+sueldoF
+    }
+    sueldoTotalMF=sueldoF+sueldoM
+    promedioM=sueldoM/contadorMasculino
+    promedioF=sueldoF/contadorFemenino
+    promedioMF=sueldoM+sueldoF/contadorFemenino+contadorMasculino
+   
+    if(Nacionalidad =="N" && sBruto>smn)
+    {
+        smn=sBruto
     }
 
+    if(Sexo=="F" && Nacionalidad == "A" sBruto>smfa)
+    {
+        smfa=sBruto
+    }
 
+    if(Sexo=="F" && sBruto>sueldoMinimo)
+    {
+        efsm=sBruto
+    }
 
+    
+    }
 
 respuesta= confirm("Desea reingresar valores?")    
 }
@@ -122,6 +158,15 @@ document.getElementById("EstadoCivil").value=eCivil
 document.getElementById("Sueldo").value=sBruto
 document.getElementById("Legajo").value=nLegajo
 document.getElementById("Nacionalidad").value=Nacionalidad
+
+alert("sueldo maximo nacionalizados " + smn)
+alert("sueldo max de f argentina " + smfa)
+alert("sueldo promedio F "+ promedioF)
+alert("sueldo promedio M "+ promedioM)
+alert("promedio masculino y femenino " + promedioMF)
+alert("cant. personas s.neto>s.promedio " + contador1)
+alert("cant. personas s.bruto<s. promedio " + contador2)
+alert("cant. personas m con sueldo >12000 " + contador3)
 
    
         
