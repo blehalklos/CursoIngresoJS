@@ -9,5 +9,130 @@ F.	Nacionalidad, “A” para argentinos, “E” para extranjeros, “N” para
  */
 function ComenzarIngreso () 
 {
- 
+    var Edad
+    var Sexo
+    var eCivil
+    var contadorMasculino=0
+    var contadorFemenino=0
+    var sBruto=0
+    var nLegajo
+    var Nacionalidad
+    var respuesta=true
+    var sueldoTotal=0
+    var sueldoMasculino=0
+    var sueldoFemenino=0
+    var sueldoPromedioM=0
+    var sueldoPromedioF=0
+    var promedio
+    var contadorPersonas=0
+    var contador1=0 // cant. personas s.neto>s.promedio
+    var contador2=0 // cant. personas s.bruto<s. promedio
+    var contador3=0 // cant. personas m con sueldo >12000
+
+
+while(respuesta==true)
+{   
+    contadorPersonas++
+   
+   
+    //pido edad
+    Edad= prompt('Ingrese su edad por favor')
+    Edad= parseInt(Edad)
+    while(Edad>=18 || Edad<=90 || isNaN(Edad))
+    {
+        console.log(Edad)
+        Edad= prompt('Solo números por favor')
+    }
+   
+   
+    //pido sexo
+    Sexo= prompt('Ingrese su sexo(M=Masculino-F=Femenino)')
+    while(Sexo!="F" && Sexo!="M")
+    {
+        Sexo= prompt('Recuerde, M=Masculino-F=Femenino')
+    }
+    
+    
+    //pido estado civil
+    eCivil= prompt('Ingrese su estado civil (1=Soltero/a - 2=Casado/a - 3=Divorciado/a - 4=Viudo/a)')
+    while(eCivil!="1" && eCivil!="2" && eCivil!="3" && eCivil!=4)
+    {
+        eCivil= prompt('Ingrese un estado civil valido por favor (1=Soltero/a - 2=Casado/a - 3=Divorciado/a - 4=Viudo/a)')
+    }
+   
+   
+    //pido sueldo
+    sBruto= prompt('Ingrese su sueldo bruto por favor')
+    sBruto= parseInt(sBruto)
+    while(sBruto<=8000 && isNaN(sBruto))
+    {
+        sBruto= prompt('Su sueldo debe ser mayor a $8000')
+    }
+   
+   
+    //pido legajo
+    nLegajo= prompt('Ingrese su legajo por favor')
+    nLegajo= parseInt(nLegajo)
+    while(nLegajo<9999 || isNaN(nLegajo))
+    {
+        nLegajo= prompt('Legajo no valido, ingreselo otra vez')
+    }
+
+   
+    //pido nacionalidad
+    Nacionalidad= prompt('Por ultimo, ingrese su nacionalidad por favor("A" si usted es Argentino/a - "E" si usted es Extranjero - "N" si usted es nacionalizado" )')
+    while(Nacionalidad!="A" && Nacionalidad!="E" && Nacionalidad!="N")
+    {
+        Nacionalidad= prompt('Recuerde "A" si usted es Argentino/a - "E" si usted es Extranjero - "N" si usted es nacionalizado"')
+    }
+    //operaciones
+    sueldoTotal=sBruto+sueldoTotal
+    promedio=sueldoTotal/contadorPersonas
+    if(sBruto>promedio)
+    {
+        contador1++
+    }
+    
+    if(sBruto<promedio)
+    {
+        contador2++
+    }
+
+    if(Sexo=="M" && sBruto<=12000)
+    {
+        contador3++
+    }
+    if(Sexo=="M")
+    {
+        contadorMasculino++
+    }
+    if(Sexo=="F")
+    {
+        contadorFemenino++
+    }
+
+
+
+
+respuesta= confirm("Desea reingresar valores?")    
 }
+document.getElementById("Edad").value=Edad
+document.getElementById("Sexo").value=Sexo
+document.getElementById("EstadoCivil").value=eCivil
+document.getElementById("Sueldo").value=sBruto
+document.getElementById("Legajo").value=nLegajo
+document.getElementById("Nacionalidad").value=Nacionalidad
+
+   
+        
+}
+
+
+
+
+    
+    
+    
+
+
+
