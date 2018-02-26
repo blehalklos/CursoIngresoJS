@@ -137,7 +137,7 @@ while(respuesta==true)
         smn=sBruto
     }
 
-    if(Sexo=="F" && Nacionalidad == "A" sBruto>smfa)
+    if(Sexo=="F" && Nacionalidad == "A" && sBruto>smfa)
     {
         smfa=sBruto
     }
