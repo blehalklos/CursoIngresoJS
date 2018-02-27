@@ -22,9 +22,12 @@ function Mostrar()
         {
             max = importe
         }
-        else if(importe < min)
+        else 
+        {
+            if(importe < min)
         {
             min = importe
+        }
         }
         
        
