@@ -20,6 +20,7 @@ int main()
     int notaJoven;
     int edadMujer;
     int notaMujer;
+    float prom;
 
     for (i=0 ; i<5 ; i++){
 
@@ -90,11 +91,12 @@ int main()
 
 
     }
+    prom= acumuladorNota / 5;
 
-    printf("El promedio de las notas totales es %d/5", acumuladorNota);
-    printf("La nota mas baja es %d y el sexo del alumno es %c",notaMin, sexoMin);
-    printf("La cantidad de varones con nota mayor a 6 es %d", contadorVarones);
-    printf("El sexo del alumno mas joven es %c y su nota es %d", sexoJoven, notaJoven);
+    printf("El promedio de las notas totales es %d/n", acumuladorNota);
+    printf("La nota mas baja es %d y el sexo del alumno es %c/n",notaMin, sexoMin);
+    printf("La cantidad de varones con nota mayor a 6 es %d/n", contadorVarones);
+    printf("El sexo del alumno mas joven es %c y su nota es %d/n", sexoJoven, notaJoven);
 
     if(flag3 = 0){
         printf("No se ingresaron mujeres");
